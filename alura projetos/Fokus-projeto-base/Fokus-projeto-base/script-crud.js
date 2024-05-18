@@ -6,15 +6,20 @@ const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textarea = document.querySelector('.app__form-textarea')
 const ulTarefas = document.querySelector('.app__section-task-list')
 const paragrafoDescriçãoTarefa = document.querySelector('.app__section-active-task-description')
+const btnRemoverConcluidas = document.querySelector('#btn-remover-concluidas')
+const btnRemoverTodas = document.querySelector('#btn-remover-todas')
 
-const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
+
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
 let tarefaSelecionada = null;
 let liTarefaSelecionada = null;
 
+//função responsável em adicionar as tarefas no locaStorage e mudar o formato para String
 function atualizarTarefas() {
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
 }
 
+//função responsável em criar os elementos de uma lista adicionar as informações providas do local storage
 function criarElementoTarefa(tarefa) {
     const li = document.createElement('li')
     li.classList.add('app__section-task-list-item')
@@ -35,6 +40,7 @@ function criarElementoTarefa(tarefa) {
     const imgBotao = document.createElement('img')
     imgBotao.setAttribute('src', '/imagens/edit.png')
 
+//função ativada pelo botão que é responsável em alterar o texto da tarefa já criada
     botao.onclick = () => {
         const novaDescricao = prompt("Qual é a nova descrição?")
         if (novaDescricao) {
@@ -51,7 +57,8 @@ function criarElementoTarefa(tarefa) {
     li.append(p)
     li.append(botao)
 
-    if (tarefaSelecionada.completa) {
+//condicional que verifica se a tarefa selecionada já foi completa e faz as mudanças visuais
+    if (tarefa.completa) {
         li.classList.add('app__section-task-list-item-complete')
         botao.setAttribute('disabled', 'disabled')
     } else {
@@ -61,6 +68,7 @@ function criarElementoTarefa(tarefa) {
                     elemento.classList.remove('app__section-task-list-item-active')
                 })
 
+//condicional que verifica se uma tarefa foi clicada duas vezes, assim tirando a seleção da tarefa 
             if (tarefaSelecionada === tarefa) {
                 paragrafoDescriçãoTarefa.textContent = ''
                 tarefaSelecionada = null
@@ -77,6 +85,7 @@ function criarElementoTarefa(tarefa) {
     return li
 }
 
+
 btnAdicionarTarefa.addEventListener('click', () => {
     formAdicionarTarefa.classList.remove('hidden')
 })
@@ -86,10 +95,12 @@ btnCancelarTarefa.addEventListener('click', () => {
     textarea.value = ''
 })
 
+//evento escutador responsável em transformar o texto do textArea em um objeto, e mandar ele para um array que vai ser armazenada no localStorage
 formAdicionarTarefa.addEventListener('submit', (evento) => {
     evento.preventDefault();
     const tarefa = {
-        descricao: textarea.value, completa: false
+        descricao: textarea.value, 
+        completa: false
     }
     tarefas.push(tarefa)
     const elementoTarefa = criarElementoTarefa(tarefa)
@@ -99,11 +110,13 @@ formAdicionarTarefa.addEventListener('submit', (evento) => {
     formAdicionarTarefa.classList.add('hidden')
 })
 
+//metodo que vai transformar todos os objetos da array em elementos da lista
 tarefas.forEach(tarefa => {
     const elementoTarefa = criarElementoTarefa(tarefa)
     ulTarefas.append(elementoTarefa)
 })
 
+//evento escutador que que chama a função customizada e modifica os valores da tarefa e o estilo da lista da tarefa
 document.addEventListener('focoFinalizado', () => {
     if (tarefaSelecionada && liTarefaSelecionada) {
 
@@ -115,3 +128,22 @@ document.addEventListener('focoFinalizado', () => {
     }
 }
 )
+
+btnRemoverConcluidas.addEventListener('click', ()=>{
+    const seletor = '.app__section-task-list-item-complete'
+    document.querySelectorAll(seletor).forEach(tarefa =>{
+        tarefa.remove(seletor)
+    })
+    tarefas = tarefas.filter(tarefa => !tarefa.completa)    
+    atualizarTarefas()
+})
+
+btnRemoverTodas.addEventListener('click', ()=>{
+    
+    const seletorTodas = '.app__section-task-list-item'
+    document.querySelectorAll(seletorTodas).forEach(tarefa =>
+        tarefa.remove(seletorTodas)
+    )
+    tarefas = []
+    atualizarTarefas()
+})

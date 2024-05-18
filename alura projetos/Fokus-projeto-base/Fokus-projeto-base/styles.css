@@ -346,6 +346,7 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
+    text-align: center;
 }
 
 .app__section-tasks-heading {

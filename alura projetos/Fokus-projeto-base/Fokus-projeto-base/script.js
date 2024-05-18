@@ -11,16 +11,19 @@ const iniciarOuPausarBt = document.querySelector('#start-pause span')
 const iniciarOuPausarBtIcone = document.querySelector(".app__card-primary-butto-icon") 
 const tempoNaTela = document.querySelector('#timer')
 
+
+//objetos dos audios
 const musica = new Audio('/sons/luna-rise-part-one.mp3')
 const audioPlay = new Audio('/sons/play.wav');
 const audioPausa = new Audio('/sons/pause.mp3');
 const audioTempoFinalizado = new Audio('./sons/beep.mp3')
 
+musica.loop = true
+
 let tempoDecorridoEmSegundos = 30
 let intervaloId = null
 
-musica.loop = true
-
+//Evento escutador que tem uma condição que verifica se o audio está pausado, e dependendo do valor do input ele pausa ou dá play na música
 musicaFocoInput.addEventListener('change', () => {
     if(musica.paused) {
         musica.play()
@@ -29,6 +32,7 @@ musicaFocoInput.addEventListener('change', () => {
     }
 })
 
+//eventos escutadores que alteram o estado do cronômetro e o estilo da página
 focoBt.addEventListener('click', () => {
     tempoDecorridoEmSegundos = 30
     alterarContexto('foco')
@@ -47,6 +51,7 @@ longoBt.addEventListener('click', () => {
     longoBt.classList.add('active')
 })
 
+//função que recebe os parâmetros dos eventos escutadores e altera o estilo, os elementos da página e o estado do cronômetro
 function alterarContexto(contexto) {
     mostrarTempo()
     botoes.forEach(function (contexto){
@@ -75,6 +80,7 @@ function alterarContexto(contexto) {
     }
 }
 
+//função guardada em referência que é responsável pela contagem do cronômetro e verificar se a contagem zerou
 const contagemRegressiva = () => {
     if(tempoDecorridoEmSegundos <= 0){
         audioTempoFinalizado.play()
@@ -91,8 +97,10 @@ const contagemRegressiva = () => {
     mostrarTempo()
 }
 
+//evento escutador que é responsável em iniciar ou pausar o cronômetro chamando a função
 startPauseBt.addEventListener('click', iniciarOuPausar)
 
+//função responsável pela contagem de 1 em 1 sec e verifica se o cronometro começou ou não a contar
 function iniciarOuPausar() {
     if(intervaloId){
         audioPausa.play()
@@ -105,6 +113,7 @@ function iniciarOuPausar() {
     iniciarOuPausarBtIcone.setAttribute('src', `/imagens/pause.png`)
 }
 
+//função responsável por zerar o cronometro
 function zerar() {
     clearInterval(intervaloId) 
     iniciarOuPausarBt.textContent = "Começar"
@@ -112,6 +121,7 @@ function zerar() {
     intervaloId = null
 }
 
+//função responsável por mudar o formato da contagem e mostrar ela no documento HTML
 function mostrarTempo() {
     const tempo = new Date(tempoDecorridoEmSegundos * 1000)
     const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
