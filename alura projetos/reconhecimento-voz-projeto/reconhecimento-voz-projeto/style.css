@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-family: "Montserrat", sans-serif;
+    --bg-color: #615EFC;
+    --primary-color: #D1D8C5;
+    --secondary-color: #7E8EF1;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+h1 {
+    font-size: 4.5em;
+    margin: 40px;
+}
+
+h2 {
+    font-size: 4em;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.mensagem {
+    font-size: 1.5em;
+}
+
+#box {
+    border: 2px solid var(--primary-color);
+    display: inline-block;
+    font-size: 4em;
+    padding: 10px;
+    margin: 20px;
+}
+
+#chuteErrado {
+    color: red;
+}
+
+strong {
+    font-weight: bold;
+}
+
+#recomecar {
+    border-radius: 15px;
+    padding: 20px;
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+    border: 3px solid var(--primary-color);
+    font-size: 3.5em;
+    font-family: var(--font-family);
+}
+
+.quantidadeTentativas {
+    display: none;
+    margin-top: 40px;
+    font-size: 1.5em;
+}

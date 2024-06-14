@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto reconhecimento de voz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+        integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="reconhecimentodevoz.js" defer></script>
+    <script src="validação.js" defer></script>
+</head>
+
+<body>
+    <H1>Acerte o número secreto</H1>
+    <h3>o número secreto está entre o <span id="menor-valor">0</span> e o <span id="maior-valor">100</span></h3>
+    <div id="chute" class="mensagem"></div>
+    <div class="quantidadeTentativas"> Quantidade de tentativas: <span id="tentativas"></span></div>
+</body>
+
+</html>
