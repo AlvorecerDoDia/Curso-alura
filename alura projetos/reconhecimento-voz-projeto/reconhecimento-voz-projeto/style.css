@@ -3,14 +3,15 @@
 :root {
     --font-family: "Montserrat", sans-serif;
     --bg-color: #615EFC;
-    --primary-color: #D1D8C5;
+    --primary-color: #a7d8c9;
     --secondary-color: #7E8EF1;
 }
 
 body {
     height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--primary-color);
+    width: 100vw;
+    background-image: linear-gradient(300deg, var(--bg-color)40% , var(--secondary-color), var(--primary-color) );
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,11 +19,12 @@ body {
     text-align: center;
     margin: 0;
     font-family: var(--font-family);
+    text-shadow: 0 0 2px rgb(112, 120, 136);
 }
 
 h1 {
     font-size: 4.5em;
-    margin: 40px;
+    margin-bottom: 40px;
 }
 
 h2 {
@@ -31,11 +33,11 @@ h2 {
 
 h3 {
     font-size: 2em;
-    margin-bottom: 20px;
 }
 
 .mensagem {
     font-size: 1.5em;
+    margin: 20%;
 }
 
 #box {
@@ -57,7 +59,7 @@ strong {
 #recomecar {
     border-radius: 15px;
     padding: 20px;
-    color: var(--primary-color);
+    color: white;
     background-color: var(--bg-color);
     border: 3px solid var(--primary-color);
     font-size: 3.5em;
@@ -66,6 +68,15 @@ strong {
 
 .quantidadeTentativas {
     display: none;
-    margin-top: 40px;
     font-size: 1.5em;
+    color: white;
+}
+
+@media(max-width: 685px){
+    h1{
+        font-size: 3em;
+    }
+    h3{
+        font-size: 1.8em;
+    }
 }
