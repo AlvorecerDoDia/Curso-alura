@@ -12,7 +12,7 @@ function possuiUmValorValido(chute) {
         elementoChute.innerHTML = `<div id='chuteErrado'> <strong> Valor invalido:</strong> </div> O numero precisa estar entre ${menorValor} e ${maiorValor}`
         return
     } else if (numero === numeroSecreto) {
-        document.body.innerHTML = `<h2>Parabéns! Você acertou o número secreto</h2><br> <h3>O número secreto era:  ${numeroSecreto}</h3><br> 
+        document.body.innerHTML = `<h2 id="txtparabens">Parabéns! Você acertou o número secreto</h2><br> <h3>O número secreto era:  ${numeroSecreto}</h3><br> 
         <button id="recomecar">Recomeçar</button>
         `
     } else if (numero > numeroSecreto) {
@@ -56,7 +56,7 @@ function diminuirTentativas() {
     if (Tentativas == 5) {
         elementoTentativas.style.color = "red";
     } else if (Tentativas == 0) {
-        document.body.innerHTML = `<<h1>GAME OVER!</h1><br><h3>O número secreto era:  ${numeroSecreto}</h3><br> 
+        document.body.innerHTML = `<h1>GAME OVER!</h1><br><h3>O número secreto era:  ${numeroSecreto}</h3><br> 
         <button id="recomecar">Recomeçar</button>`
     }
     return elementoTentativas.innerHTML = Tentativas

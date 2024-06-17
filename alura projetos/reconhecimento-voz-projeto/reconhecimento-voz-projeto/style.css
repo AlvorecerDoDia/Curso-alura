@@ -10,7 +10,7 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(300deg, var(--bg-color)40% , var(--secondary-color));
+    background-image: linear-gradient(300deg, var(--bg-color)40%, var(--secondary-color));
     color: white;
     display: flex;
     flex-direction: column;
@@ -72,11 +72,25 @@ strong {
     color: white;
 }
 
-@media(max-width: 685px){
-    h1{
-        font-size: 3em;
+@media(max-width: 685px) {
+    h1 {
+        padding: 10px;
+        font-size: 2.7em;
     }
-    h3{
-        font-size: 1.8em;
+
+    h3 {
+        padding: 10px;
+        font-size: 1.6em;
     }
+
+    #txtparabens {
+        font-size: 2.7em;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+
+    #recomecar {
+        font-size: 2.0em;
+    }
+
 }
