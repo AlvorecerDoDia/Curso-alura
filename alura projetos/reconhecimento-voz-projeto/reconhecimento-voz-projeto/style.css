@@ -10,7 +10,7 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(300deg, var(--bg-color)40% , var(--secondary-color), var(--primary-color) );
+    background-image: linear-gradient(300deg, var(--bg-color)40% , var(--secondary-color));
     color: white;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ h3 {
 
 .mensagem {
     font-size: 1.5em;
-    margin: 20%;
+    margin: 70px;
 }
 
 #box {
